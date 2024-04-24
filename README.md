@@ -11,13 +11,10 @@ Satellite Scout is a web application designed to help users locate satellites wi
 
 ## Installation
 
-1. Clone the repository: `git clone <repository-url>`
-2. Navigate to the project directory: `cd satellite-scout`
-3. Install dependencies: `pip install -r requirements.txt`
-4. Run the Flask application: `python app.py`
+1. This project is still under construction!
 
 ## Usage
-
+- Under construction.
 1. Access the application through your web browser.
 2. Click on the "Get My Location" button to retrieve your current coordinates.
 3. Click on the "Start" button to view nearby satellites on the map and in the table.
