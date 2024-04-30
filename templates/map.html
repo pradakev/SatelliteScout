@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/styles.css">
+    <link href="/static/satVector.png" rel="icon" type="image/png">
+    <title>SatelliteScout</title>
+</head>
+<style>
+    h1 {
+    font-size: 2em; /* Set the font size to 2 times the default size */
+}
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+canvas {
+    border: 2px solid gray;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+}
+.container {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 1;
+    height: 100%;
+}
+.button-container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+}
+.button-container button {
+    margin-right: 10px;
+    
+}
+.overlay-image {
+    position: absolute; /* Set the position of the overlay image to absolute */
+    bottom: 0; /* Position the overlay image at the bottom */
+    left: 0; /* Position the overlay image at the left */
+    width: 200px;
+}
+.logo-container{
+    position: absolute; /* Set the position of the overlay image to absolute */
+    top: 20px; /* Position the overlay image at the bottom */
+    left: 20px; /* Position the overlay image at the left */
+}
+.map{
+    height: 25%;
+    width: 75%;
+    margin-bottom: 40px;
+    border: 4px gray;
+}
+table {
+    border-collapse: collapse;
+    table-layout: fixed;
+    
+}
+th, td {
+    /* border: 2px solid gray; */
+    text-align: center;
+    padding: 4px;
+    color: black; /* Add this to ensure text is visible */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 50%; /* Set the width of the td elements to match the th elements */
+    height: 40px; /* Set the height of the td elements */
+
+}
+</style>
+<body class="bg-primary"> <!-- Use Bootstrap's bg-primary class to set the background color to primary -->
+    <script src="/static/js/bootstrap.bundle.min.js"></script>
+    <canvas id="canvas"></canvas>
+
+    <div class="logo-container">
+        <h1 class="text-light">SatelliteScout</h1>
+    </div>
+
+    <div class="container">
+        <div id="map" class="map"></div>
+        <div>
+            <table id="satellite-table" class="table table-bordered table-hover table-success table-striped" style="width: 300px;">
+                <thead>
+                    <tr>
+                        <th class="text-dark">Satellite</th> <!-- Header for the left column -->
+                        <th class="text-dark">Location</th> <!-- Header for the right column -->
+                        <th class="text-dark">Altitude</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        
+        <img src="/static/satVector.png" alt="Overlay Image" class="overlay-image" style="width: 200px;">
+    </div>
+    <script>
+        // Initialize and display the map
+        function initMap() {
+            // Specify coordinates to center the map
+            const urlParams = new URLSearchParams(window.location.search);
+            const lat = parseFloat(urlParams.get('latitude'));
+            const lng = parseFloat(urlParams.get('longitude'));
+            console.log(lat)
+            console.log(lng)
+
+            const center = { lat: lat, lng: lng };
+            
+            // Create a new map instance and set its options
+            const map = new google.maps.Map(document.getElementById("map"), {
+                center: center, // Set the center of the map
+                zoom: 10, // Set the initial zoom level
+            });
+            const marker = new google.maps.Marker({
+                position: center,
+                map: map,
+                title: 'Center'
+            });
+        }
+    </script>
+    
+    <script src="/static/js/satelliteData.js"></script>
+    <!-- Include the Google Maps API script with your API key -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQ4r__tCbk3tF0m0nvMiizMpMa5M94Q9s&callback=initMap" async defer></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/satVector.png" rel="icon" type="image/png">
+    <title>{% block title %}SatelliteScout{% endblock %}</title>
+    <style>
+        body {
+            background-color: #007bff; /* Set background color */
+            position: relative; /* Set position to relative for positioning the satellite image */
+        }
+
+        .satellite-image {
+            position: absolute; /* Set position to absolute for positioning the satellite image */
+            bottom: 10px; /* Position the satellite image 10 pixels from the bottom */
+            left: 10px; /* Position the satellite image 10 pixels from the left */
+            width: 100px; /* Set the width of the satellite image */
+            height: auto; /* Automatically adjust the height */
+        }
+
+        .title {
+            position: absolute; /* Set position to absolute for positioning the title */
+            top: 10px; /* Position the title 10 pixels from the top */
+            left: 10px; /* Position the title 10 pixels from the left */
+            color: #fff; /* Set the color of the title to white */
+            font-size: 24px; /* Set the font size of the title */
+        }
+    </style>
+</head>
+<body>
+    {% block content %}
+    {% endblock %}
+    <img src="/static/satVector.png" alt="Satellite Image" class="overlay-image" style="width: 200px;">
+    <h1 class="title">SatelliteScout</h1>
+</body>
+</html>

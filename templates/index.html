@@ -4,48 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/static/css/bootstrap.min.css" rel="stylesheet">
-
+    <link rel="stylesheet" type="text/css" href="/static/styles.css">
+    <link href="/static/satVector.png" rel="icon" type="image/png">
     <title>SatelliteScout</title>
-    <style>
-        /* Remove the background-color property from here */
-
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-        }
-
-        canvas {
-            border: 2px solid gray;
-            position: absolute;
-            z-index: -1;
-            width: 100%;
-            height: 100%;
-        }
-        .container {
-            padding: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            z-index: 1;
-            height: 100%;
-        }
-        .button-container {
-            display: flex;
-            flex-direction: row;
-            margin-top: 20px;
-        }
-        .button-container button {
-            margin-right: 10px;
-        }
-        #demo-placeholder {
-            height: 2.5em; /* Adjust the height to match the height of the paragraph text */
-            margin-top: 2.5em; /* Adjust the margin to match the height of the paragraph text */
-        }
-    </style>
 </head>
+<style>
+    h1 {
+    font-size: 3.5em; /* Set the font size to 2 times the default size */
+}
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+canvas {
+    border: 2px solid gray;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+}
+.container {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 1;
+    height: 100%;
+}
+.button-container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+}
+.button-container button {
+    margin-right: 10px;
+    width: 200px;
+    
+}
+.overlay-image {
+    position: absolute; /* Set the position of the overlay image to absolute */
+    bottom: 0; /* Position the overlay image at the bottom */
+    left: 0; /* Position the overlay image at the left */
+    width: 200px;
+}
+table {
+    border-collapse: collapse;
+    table-layout: fixed;
+    
+}
+th, td {
+    /* border: 2px solid gray; */
+    padding: 4px;
+    color: black; /* Add this to ensure text is visible */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+</style>
 <body class="bg-primary"> <!-- Use Bootstrap's bg-primary class to set the background color to primary -->
     <script src="/static/js/bootstrap.bundle.min.js"></script>
     <canvas id="canvas"></canvas>
@@ -54,16 +71,35 @@
             <h1 class="text-light">SatelliteScout</h1>
         </div>
         <div class="button-container">
-            <button onclick="getLocation()" class="btn btn-light">Get My Location</button>
-            <button class="btn btn-secondary">Input Coordinates</button>
+            <button onclick="getLocation()" class="btn btn-secondary">Get My Location</button>
+            <button class="btn btn-secondary" onclick="redirectToMap()">Start</button>
         </div>
         <div class="button-container">
             <p class="text-light" id="demo-placeholder"></p> <!-- Placeholder element -->
             <p class="text-warning" id="demo"></p>
         </div>
+        <div>
+            <table class="table table-bordered table-hover table-primary table-striped" style="width: 300px;">
+                <tr>
+                    <td class="text-dark">Latitude</td>
+                    <td id="latitude" class="text-dark"></td>
+                </tr>
+                <tr>
+                    <td class="text-dark">Longitude</td>
+                    <td id="longitude" class="text-dark"></td>
+                </tr>
+                <tr>
+                    <td class="text-dark">Accuracy</td>
+                    <td id="accuracy" class="text-dark"></td>
+                </tr>
+            </table>
+        </div>
+        <img src="/static/satVector.png" alt="Overlay Image" class="overlay-image" style="width: 200px;">
     </div>
     <script>
-        const x = document.getElementById("demo");
+        const latitudeElement = document.getElementById("latitude");
+        const longitudeElement = document.getElementById("longitude");
+        const accuracyElement = document.getElementById("accuracy");
 
         function getLocation() {
             if (navigator.geolocation) {
@@ -74,9 +110,15 @@
         }
 
         function showPosition(position) {
-            x.innerHTML = "Latitude: " + position.coords.latitude + 
-            "<br>Longitude: " + position.coords.longitude +
-            "<br>Accuracy: " + position.coords.accuracy;
+            latitudeElement.innerText = position.coords.latitude;
+            longitudeElement.innerText = position.coords.longitude;
+            accuracyElement.innerText = position.coords.accuracy;
+        }
+
+        function redirectToMap() {
+            const latitude = latitudeElement.innerText;
+            const longitude = longitudeElement.innerText;
+            window.location.href = `/map?latitude=${latitude}&longitude=${longitude}`;
         }
     </script>
 </body>

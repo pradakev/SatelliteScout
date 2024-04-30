@@ -8,6 +8,6 @@ def index():
 
 @app.route('/map', methods=['GET'])
 def map():
-    return render_template('index.html')
+    return render_template('map.html')
 
 app.run(debug=True)
