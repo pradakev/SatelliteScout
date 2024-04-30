@@ -1,40 +1,35 @@
-# SatelliteScout
+# Satellite Scout
 
-**Description:**
-SatelliteScout is a web application designed to help users locate satellites in their vicinity based on their current location. The application utilizes Flask, Bootstrap, and JavaScript to provide a user-friendly interface for accessing satellite information.
+Satellite Scout is a web application designed to help users locate satellites within close proximity to their current location. This project utilizes HTML, CSS, Bootstrap, Flask, and multiple APIs to create an interactive and informative experience for users.
 
-**Features:**
-- **User Location Detection:** Users can easily retrieve their current location with the click of a button, using the browser's geolocation feature.
-- **Input Coordinates:** Users also have the option to input specific coordinates to find satellites near a particular location.
-- **Display Satellite Information:** The application displays the latitude, longitude, and accuracy of the user's location.
-- **Future Integration:** The project aims to integrate with a TLE (Two-Line Element) API to provide real-time data on nearby satellites based on the user's location.
+## Features
 
-**Installation:**
-1. Clone the repository: `git clone https://github.com/SatelliteScout.git`
-2. Navigate to the project directory: `cd SatelliteScout`
-3. Install the required dependencies: `pip install -r requirements.txt`
-4. Run the Flask application: `python app.py`
-5. Access the application in your web browser at `http://localhost:5000`
+- **Geolocation:** Users can retrieve their current location with the click of a button.
+- **Map Integration:** The Google Maps API is integrated to display the user's location on a map interface.
+- **Satellite Data:** Real-time satellite data is fetched using the N2YO API, allowing users to view nearby satellites.
+- **Table Display:** A table is dynamically updated with the closest satellites based on the user's coordinates.
 
-**Usage:**
-1. Upon accessing the application, users will see the SatelliteScout logo and two buttons: "Get My Location" and "Input Coordinates."
-2. Clicking on "Get My Location" will retrieve the user's current latitude, longitude, and accuracy.
-3. Alternatively, users can input specific coordinates by clicking on "Input Coordinates" and entering the desired latitude and longitude.
-4. The application will display the retrieved location information along with any nearby satellites.
+## Installation
 
-**Future Enhancements:**
-1. Integration with TLE API: Implementing a TLE API to fetch real-time satellite data based on the user's location.
-2. Enhanced UI/UX: Improving the user interface and experience to make the application more intuitive and visually appealing.
-3. Additional Features: Adding features such as satellite tracking, satellite details, and filtering options for a richer user experience.
+1. This project is still under construction!
 
-**Contributing:**
-Contributions to SatelliteScout are welcome! Feel free to fork the repository, make improvements, and submit pull requests.
+## Usage
+- Under construction.
+1. Access the application through your web browser.
+2. Click on the "Get My Location" button to retrieve your current coordinates.
+3. Click on the "Start" button to view nearby satellites on the map and in the table.
 
-**License:**
+## Credits
+
+- **Bootstrap:** Front-end styling and layout.
+- **Flask:** Backend framework for routing and serving dynamic content.
+- **Google Maps API:** Integration for map visualization.
+- **N2YO API:** Retrieval of real-time satellite data.
+
+## License
+
 This project is licensed under the [MIT License](LICENSE).
 
-**Acknowledgments:**
-- Bootstrap for providing the responsive design framework.
-- Flask for the web application framework.
-- JavaScript for enabling dynamic content and interaction.
-- Open-source satellite data providers for making satellite information accessible.
+---
+
+Feel free to customize this README with additional information or sections as needed!
